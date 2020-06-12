@@ -105,14 +105,14 @@ class OneDrivePublisher {
       setInterval(async () => {
         this.deploy(blog).then(() => {
           console.log(`${this.getTime()}: Blog at ${blog.blogPath} re-deployed.`)
-        })
+        }, () => {})
           .catch(() => {
           console.log(`${this.getTime()}: Blog at ${blog.blogPath} cannot get deployed. Retry in ${blog.cycle} seconds.`)
         })
       }, blog.cycle * 1000);
       this.deploy(blog).then(() => {
         console.log(`${this.getTime()}: Blog at ${blog.blogPath} re-deployed.`)
-      })
+      }, () => {})
         .catch(() => {
         console.log(`${this.getTime()}: Blog at ${blog.blogPath} cannot get deployed. Retry in ${blog.cycle} seconds.`)
       })
